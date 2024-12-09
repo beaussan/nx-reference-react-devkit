@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "hello": {
+      "implementation": "./dist/executors/hello",
+      "schema": "./dist/executors/schema.json",
+      "description": "hello executor"
+    }
+  }
+}

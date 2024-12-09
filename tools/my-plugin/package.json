@@ -1,0 +1,52 @@
+{
+  "name": "@nx-reference-react-devkit/my-plugin",
+  "version": "0.0.1",
+  "dependencies": {
+    "@nx/devkit": "20.2.1",
+    "tslib": "^2.3.0"
+  },
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "private": true,
+  "nx": {
+    "sourceRoot": "tools/my-plugin/src",
+    "projectType": "library",
+    "targets": {
+      "build": {
+        "executor": "@nx/js:tsc",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "options": {
+          "outputPath": "tools/my-plugin/dist",
+          "main": "tools/my-plugin/src/index.ts",
+          "tsConfig": "tools/my-plugin/tsconfig.lib.json",
+          "rootDir": "tools/my-plugin/src",
+          "generatePackageJson": false,
+          "assets": [
+            {
+              "input": "./tools/my-plugin/src",
+              "glob": "**/!(*.ts)",
+              "output": "."
+            },
+            {
+              "input": "./tools/my-plugin/src",
+              "glob": "**/*.d.ts",
+              "output": "."
+            }
+          ]
+        }
+      }
+    },
+    "name": "my-plugin"
+  },
+  "generators": "./generators.json",
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo",
+    "generators.json",
+    "executors.json"
+  ],
+  "executors": "./executors.json"
+}
